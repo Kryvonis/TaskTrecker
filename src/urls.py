@@ -21,8 +21,7 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^api/v1/', include('src.tasks.urls')),
+    url(r'^api/v1/', include('src.tasks.urls'), name='api'),
     url(r'^task.tmpl.html/$',
         TemplateView.as_view(template_name='tasks/task.tmpl.html')),
     url(r'^$', index, name='index'),
