@@ -1,4 +1,7 @@
 # DjangoUserProject
+## Requirements
+    pyhton3
+    OS:Linux or Mac
 ### instalations steps
 
     git clone https://github.com/Kryvonis/TaskTrecker.git .
