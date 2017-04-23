@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!-- Angular Material CSS now available via Google CDN; version 0.9.4 used here -->
+  <link rel="stylesheet"
+        href='{% static "tasks/css/angular-material.min.css" %}'>
+  <link rel="stylesheet"
+        href='{% static "tasks/css/base.css" %}'>
+</head>
+<body>
+<div ng-controller="tasksController" ng-cloak>
+  <!----------------->
+  <!--   Toolbar   -->
+  <!----------------->
+  <md-content>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Logout"
+                   ng-click="logout()">
+          <md-icon
+                  md-svg-icon='{% static "tasks/img/icons/ic_close_white_24px.svg" %}'></md-icon>
+        </md-button>
+        <md-button aria-label="Add Task" ng-click="showEditTask($event)">
+          add task
+        </md-button>
+
+        <md-button aria-label="Show Done" ng-click="switchShowAll()">
+          Show [[showTitle]]
+        </md-button>
+      </div>
+{#      <md-button aria-label="Show Done" ng-click="listDone()">#}
+{#        show done#}
+{#      </md-button>#}
+
+    </md-toolbar>
+  </md-content>
+  <!----------------->
+  <!--    Cards    -->
+  <!----------------->
+  <md-content class="md-padding" layout-xs="column" layout="column">
+    <div ng-repeat="task in tasks" flex-xs flex-gt-xs="50">
+      <md-card flex>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button class="md-icon-button" aria-label="Logout"
+                     ng-click="doneTask(task)">
+            <md-icon
+                    md-svg-icon='{% static "tasks/img/icons/ic_done_black_24px.svg" %}'></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Logout"
+                     ng-click="showEditTask($event,task)">
+            <md-icon
+                    md-svg-icon='{% static "tasks/img/icons/ic_edit_black_24px.svg" %}'></md-icon>
+          </md-button>
+          <md-button class="md-icon-button" aria-label="Logout"
+                     ng-click="deleteTask(task)">
+            <md-icon
+                    md-svg-icon='{% static "tasks/img/icons/ic_delete_black_24px.svg" %}'></md-icon>
+          </md-button>
+
+        </md-card-actions>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline"><h1>[[task.name]]</h1></span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            [[task.description]]
+          </p>
+          <h3>
+            Author: [[task.author.username]]
+          </h3>
+          <p>
+            Status: [[task.status ? 'Done' : 'Undone']]
+          </p>
+        </md-card-content>
+      </md-card>
+    </div>
+  </md-content>
+</div>
+
+<script src='{% static "tasks/js/angular.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-route.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-material.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-aria.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-animate.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-messages.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-cookies.js" %}'></script>
+
+
+<script src='{% static "tasks/js/tasks.js" %}'></script>
+</body>
+</html>

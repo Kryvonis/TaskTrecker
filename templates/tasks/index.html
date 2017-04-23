@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  {#  <link rel="stylesheet" type="text/css"#}
+  {#        href='{% static "tasks/css/index.css" %}'>#}
+  <!-- Angular Material CSS now available via Google CDN; version 0.9.4 used here -->
+  <link rel="stylesheet"
+        href='{% static "tasks/css/angular-material.min.css" %}'>
+  <link rel="stylesheet"
+        href='{% static "tasks/css/base.css" %}'>
+</head>
+<body ng-cloak ng-controller="loginController">
+
+<!------------------->
+<!--   LoginForm   -->
+<!------------------->
+<div layout-align="center center" layout-margin ng-cloak
+     class="md-inline-form">
+  <md-content md-theme="docs-dark" layout-padding >
+
+    <form name="loginForm" ng-submit="login(credentials)" layout="row"
+          layout-align="center center">
+
+      <div layout="row" layout-xs="column">
+        <md-input-container>
+          <label>Username</label>
+          <md-icon
+                  md-svg-src='{% static "tasks/img/icons/ic_account_box_white_24px.svg" %}'
+                  class="name"></md-icon>
+          <input required name="Username" ng-model="credentials.username">
+
+          <div ng-messages="loginForm.Username.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+
+
+        <md-input-container>
+          <label>Password</label>
+          <md-icon
+                  md-svg-src='{% static "tasks/img/icons/ic_lock_white_24px.svg" %}'
+                  class="name"></md-icon>
+          <input required name="Password" type="password"
+                 ng-model="credentials.password">
+          <div ng-messages="loginForm.Password.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout="row" layout-align="end center">
+        <md-button type="submit">Submit</md-button>
+      </div>
+
+    </form>
+    <div layout=row layout-align="center">
+      <p>[[result]]</p>
+    </div>
+  </md-content>
+</div>
+
+<script src='{% static "tasks/js/angular.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-route.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-material.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-aria.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-animate.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-messages.min.js" %}'></script>
+<script src='{% static "tasks/js/angular-cookies.js" %}'></script>
+
+
+<script src='{% static "tasks/js/index.js" %}'></script>
+
+</body>
+</html>

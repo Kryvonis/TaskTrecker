@@ -1,0 +1,54 @@
+{% load static %}
+<div style="width:40%;">
+  <md-dialog aria-label="Add/Edit Task"
+             ng-cloak>
+
+    <form ng-cloak>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2>[[operationTitle]]</h2>
+          <span flex></span>
+          <md-button class="md-icon-button" ng-click="cancel()">
+            <md-icon
+                    md-svg-src='{% static "tasks/img/icons/ic_close_white_24px.svg" %}'
+                    aria-label="Close dialog"></md-icon>
+          </md-button>
+        </div>
+      </md-toolbar>
+
+      <md-dialog-content layout-margin>
+        <div layout="row">
+          <md-input-container flex>
+            <label>Title</label>
+            <input ng-model="task.name">
+          </md-input-container>
+
+          <md-input-container flex>
+            <label>Author</label>
+            <md-select ng-model="task.author">
+              <md-option ng-repeat="user in users"
+                         value="[[user ? user.id : '']]">
+                [[user ? user.username : '']]
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+
+        <md-input-container class="md-block" flex>
+          <label>Description</label>
+          <textarea ng-model="task.description" md-maxlength="500" rows="10"
+                    md-select-on-focus></textarea>
+        </md-input-container>
+
+
+      </md-dialog-content>
+
+      <md-dialog-actions>
+
+        <md-button ng-click="addOrEditTask(task,operationTitle)">
+          [[operationTitle]]
+        </md-button>
+      </md-dialog-actions>
+    </form>
+  </md-dialog>
+</div>
