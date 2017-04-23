@@ -1,6 +1,6 @@
 # DjangoUserProject
 ## Requirements
-    pyhton3
+    Pyhton 3
     OS:Linux or Mac
 ### instalations steps
 
