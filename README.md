@@ -1,4 +1,4 @@
-# DjangoUserProject
+# TaskProject
 ## Requirements
     Pyhton 3
     OS:Linux or Mac
